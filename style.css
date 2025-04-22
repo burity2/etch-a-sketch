@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(185, 204, 207);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 50px 300px 0px 0px;
+    padding: 50px;
+
+}
+
+#button-pad {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 0px 100px 0px 250px;
+}
+
+.grid {
+    border-width:1px;
+    border-style: solid;
+    border-color: rgb(102, 102, 102);
+    background-color: rgb(218, 214, 192);
+    padding: 40px;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 18px;
+}
