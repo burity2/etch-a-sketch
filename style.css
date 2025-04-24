@@ -39,17 +39,6 @@ body {
     flex-shrink: 1;
 }
 
-.gridded-grid {
-
-    display: flex;
-    background-color: #dad6c0;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    height: 25%;
-    width: 25%;
-}
-
 .btn {
     padding: 12px 24px;
     font-size: 18px;

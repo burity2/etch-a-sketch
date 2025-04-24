@@ -1,8 +1,29 @@
+let pixelColor = "DimGrey"
+
 //starts the page with a interactible grid
+for (i=0; i < 64; i++) {
+    const grid = document.createElement("div");
+    grid.className = "grid";
 
+    document.getElementById("container").appendChild(grid);
+    grid.addEventListener("mouseover", () => {
+        grid.style.backgroundColor = pixelColor
+    })
 
-//this creates the grid and makes it mouse sensitive 
+    const gridProportion = document.querySelectorAll(".grid");
+    for (m = 0; m < gridProportion.length; m++) {
+        gridProportion[m].style.height = (400/8) + "px"
+        gridProportion[m].style.width = (400/8) + "px"
+    }
+}
+
+//this function remove previous grid and creates a new grid based on the prompt value inserted
 const gridGenerator = function(x) {
+    const gridRemover = document.querySelectorAll(".grid");
+for (i=0; i < gridRemover.length; i++) {
+    gridRemover[i].remove()
+}
+
 for (i=0; i < x*x; i++) {
     const grid = document.createElement("div");
     grid.className = "grid";
@@ -37,19 +58,19 @@ canvasResize.addEventListener("click", () =>{
 
 const promptLooper = function () {
     const canvasDimension = prompt("Insert canvas dimensions:")
-    if (canvasDimension > 100) {
-        alert("That's too much! Insert a value of 100 or below")
+    if (canvasDimension > 50) {
+        alert("That's too much! Insert a value of 50 or below")
         promptLooper()
 
     } else if (canvasDimension < 0) {
-        alert("That does not work! Insert a value between 1 and 100")
+        alert("That does not work! Insert a value between 1 and 50")
         promptLooper()
 
-    } else if (canvasDimension < 100) {
+    } else if (canvasDimension < 51) {
         gridGenerator(canvasDimension)
 
     } else {
-        alert("Mind entering a number between 1 and 100?")
+        alert("Mind entering a number between 1 and 50?")
         promptLooper()
     }
 }
@@ -57,7 +78,7 @@ const promptLooper = function () {
 // button that randomizes the sketch color
 const changeColor = document.getElementById("randomize-color")
 changeColor.addEventListener("click", () => {
-    grid.style.backgroundColor = randomizeColor()
+    pixelColor = randomizeColor()
 })
 
 const randomizeColor = function () {
@@ -88,25 +109,18 @@ const randomizeColor = function () {
 // button that toggles grid view
 const canvasGrid = document.getElementById("grid-viwer")
 canvasGrid.addEventListener("click", () => {
-    console.log("click works")
     const canvaSelector = document.querySelectorAll(".grid")
-    canvaSelector.classList.toggle("gridded-grid")
-})
-
-```
-    for (l=0; l < canvaSelector.length; l++) {
-        canvaSelector[l].style.borderInlineColor = "DimGrey"
+    function gridAdder() {
+        if (canvaSelector.style.borderInlineColor === "#dad6c0") {
+            for (l=0; l < canvaSelector.length; l++) {
+                canvaSelector[l].style.borderInlineColor = "DimGrey";
+                canvaSelector[l].style.borderStyle = "solid";
+                canvaSelector[l].style.borderWidth= "1px";
+            }
+        } else {
+            for (l=0; l < canvaSelector.length; l++) {
+                canvaSelector[l].style.borderWidth= "0px";
+            }
+        }
     }
-
-
-
-    for (i=0; i < 4; i++) {
-    const grid = document.createElement("div");
-    grid.className = "grid";
-
-    document.getElementById("container").appendChild(grid);
-    grid.addEventListener("mouseover", () => {
-        grid.style.backgroundColor = "DimGrey"
-    })
-}
-```
+})
